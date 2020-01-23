@@ -134,3 +134,30 @@ if __name__ == '__main__':
     kw = {'d': 88, 'x': '#'}
     # 对于任何函数都可以使用如下方式调用
     f1(*args, **kw)
+
+    # 练习 可接收一个或多个数并计算乘积
+
+    def product(*ns):
+        r = 1
+        for n in ns:
+            r = r * n
+        return r
+
+    print('product(5) =', product(5))
+    print('product(5, 6) =', product(5, 6))
+    print('product(5, 6, 7) =', product(5, 6, 7))
+    print('product(5, 6, 7, 9) =', product(5, 6, 7, 9))
+    if product(5) != 5:
+        print('测试失败!')
+    elif product(5, 6) != 30:
+        print('测试失败!')
+    elif product(5, 6, 7) != 210:
+        print('测试失败!')
+    elif product(5, 6, 7, 9) != 1890:
+        print('测试失败!')
+    else:
+        try:
+            product()
+            print('测试成功!')
+        except TypeError:
+            print('测试失败!')
