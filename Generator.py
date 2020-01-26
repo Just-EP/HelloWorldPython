@@ -51,3 +51,24 @@ if __name__ == '__main__':
     for n in fib(6):
         print(n)
     # 只能获取yield返回的值 而不能获取return的值 想获取return的值 需要捕获StopIteration错误 返回值包含在StopIteration的value中
+
+    # 杨辉三角
+    def triangles():
+        L = [1]
+        while True:
+            yield L
+            L = [1] + [L[n]+L[n+1] for n in range(len(L)-1)] + [1]
+
+
+    n = 0
+    results = []
+    for t in triangles():
+        results.append(t)
+        n = n + 1
+        if n == 10:
+            break
+
+    for t in results:
+        print(t)
+    # list 加法
+    print([1]+[2]+[3])
